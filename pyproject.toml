@@ -1,12 +1,12 @@
 [tool.poetry]
 name = "coronavirus_scrapy"
-version = "0.1.0"
+version = "0.2.0"
 description = ""
 authors = ["Mohamed <m.n.kaizen@gmail.com>", "Nabil Mohammed <nabil.alanssi19@gmail.com>"]
 license = "MIT"
 
 [tool.poetry.dependencies]
-python = "3.8.2"
+python = "^3.7"
 fastapi = {extras = ["all"], version = "^0.52"}
 loguru = "^0.4.1"
 pendulum = "^2.1.0"
