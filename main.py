@@ -100,8 +100,41 @@ async def get_country_corona_virus_data(country: str = "Ethiopia"):
 
         https://example.com/?country=china
     """
-
     return get_data(country=country.lower())
+
+
+@app.get("/total/")
+async def get_total_corona_virus_cases():
+    """Getting total corona virus cases."""
+    respond = session.get("https://www.worldometers.info/coronavirus/")
+
+    cases, deaths, recovered = respond.html.find(".maincounter-number")
+
+    total_currently_infected_patients = respond.html.find(
+        ".number-table-main", first=True
+    ).text
+
+    total_cases_which_had_an_outcome = respond.html.find(".number-table-main")[1].text
+
+    total_in_mild_condition = respond.html.find(".number-table", first=True).text
+
+    total_serious_or_critical = respond.html.find(".number-table")[1].text
+
+    totals_cases = cases.find("span", first=True).text
+
+    totals_deaths = deaths.find("span", first=True).text
+
+    totals_recovered = recovered.find("span", first=True).text
+
+    return {
+        "totals_cases": totals_cases,
+        "totals_deaths": totals_deaths,
+        "totals_recovered": totals_recovered,
+        "total_currently_infected_patients": total_currently_infected_patients,
+        "total_cases_which_had_an_outcome": total_cases_which_had_an_outcome,
+        "total_in_mild_condition": total_in_mild_condition,
+        "total_serious_or_critical": total_serious_or_critical,
+    }
 
 
 async def http400_error_handler(_, exc):
