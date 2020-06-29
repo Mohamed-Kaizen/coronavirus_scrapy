@@ -1,0 +1,15 @@
+{
+    "version": 2,
+    "builds": [{ "src": "main.py", "use": "@now/python" }],
+    "routes": [
+        { "src": "/", "dest": "main.py" },
+        { "src": "/total/", "dest": "main.py" },
+        { "src": "/docs", "dest": "main.py" },
+        { "src": "/redoc", "dest": "main.py" },
+        { "src": "/openapi.json", "dest": "main.py" }
+    ],
+    "files": [
+        "main.py",
+        "requirements.txt"
+    ]
+}

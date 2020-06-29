@@ -348,3 +348,4 @@ db.sqlite3-wal
 *.log
 
 # End of https://www.gitignore.io/api/linux,macos,flask,python,windows,pycharm+all,jupyternotebooks,visualstudiocode
+.vercel
