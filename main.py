@@ -83,6 +83,7 @@ class CoronaVirusData(BaseModel):
     active_case: str
     serious_critical: str
     total_cases_1_M_pop: str
+    total_deaths_1_m_pop: str
     total_test: str
     total_test_1_m_pop: str
     population: str
