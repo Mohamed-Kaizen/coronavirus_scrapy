@@ -43,6 +43,7 @@ def get_data(*, country: str):
             total_death = 0 if tds[4].text == "" else tds[4].text
             new_death = 0 if tds[5].text == "" else tds[5].text
             total_recovered = 0 if tds[6].text == "" else tds[6].text
+            new_recovered = 0 if tds[7].text == "" else tds[7].text
             active_case = 0 if tds[8].text == "" else tds[8].text
             serious_critical = 0 if tds[9].text == "" else tds[9].text
             total_cases_1_m_pop = 0 if tds[10].text == "" else tds[10].text
@@ -51,6 +52,9 @@ def get_data(*, country: str):
             total_test_1_m_pop = 0 if tds[13].text == "" else tds[13].text
             population = 0 if tds[14].text == "" else tds[14].text
             continent = 0 if tds[15].text == "" else tds[15].text
+            one_case_every_x_ppl = 0 if tds[16].text == "" else tds[16].text
+            one_death_every_x_ppl = 0 if tds[17].text == "" else tds[17].text
+            one_test_every_x_ppl = 0 if tds[18].text == "" else tds[18].text
             data.update(
                 {
                     "country": country,
@@ -59,6 +63,7 @@ def get_data(*, country: str):
                     "total_death": total_death,
                     "new_death": new_death,
                     "total_recovered": total_recovered,
+                    "new_recovered":new_recovered,
                     "active_case": active_case,
                     "serious_critical": serious_critical,
                     "total_cases_1_M_pop": total_cases_1_m_pop,
@@ -67,6 +72,9 @@ def get_data(*, country: str):
                     "total_test_1_m_pop": total_test_1_m_pop,
                     "population": population,
                     "continent": continent,
+                    "one_case_every_x_ppl": one_case_every_x_ppl,
+                    "one_death_every_x_ppl": one_death_every_x_ppl,
+                    "one_test_every_x_ppl": one_test_every_x_ppl,
                 }
             )
 
@@ -80,6 +88,7 @@ class CoronaVirusData(BaseModel):
     total_death: str
     new_death: str
     total_recovered: str
+    new_recovered: str
     active_case: str
     serious_critical: str
     total_cases_1_M_pop: str
@@ -88,6 +97,9 @@ class CoronaVirusData(BaseModel):
     total_test_1_m_pop: str
     population: str
     continent: str
+    one_case_every_x_ppl: str
+    one_death_every_x_ppl: str
+    one_test_every_x_ppl: str
 
 
 @app.get("/", response_model=CoronaVirusData)
